@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#000000" />
+
+  <title>FocusFlow - Productivity Dashboard</title>
+
+  <link rel="manifest" href="manifest.json" />
+  <link rel="stylesheet" href="style.css" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+  <!-- Loading Screen -->
+  <div id="loader">
+    <div class="loader-logo">FocusFlow</div>
+  </div>
+
+  <!-- App -->
+  <div class="app-container">
+
+    <!-- Header -->
+    <header class="header glass">
+      <div>
+        <h1>FocusFlow</h1>
+        <p>Stay focused. Stay productive.</p>
+      </div>
+
+      <button id="themeToggle" class="icon-btn">
+        🌙
+      </button>
+    </header>
+
+    <!-- Dashboard Stats -->
+    <section class="dashboard">
+
+      <div class="stat-card">
+        <h3 id="taskCount">0</h3>
+        <span>Tasks</span>
+      </div>
+
+      <div class="stat-card">
+        <h3 id="completedCount">0</h3>
+        <span>Completed</span>
+      </div>
+
+      <div class="stat-card">
+        <h3 id="noteCount">0</h3>
+        <span>Notes</span>
+      </div>
+
+    </section>
+
+    <!-- Todo Section -->
+    <section class="card fade-up">
+
+      <div class="section-header">
+        <h2>To-Do List</h2>
+      </div>
+
+      <div class="input-group">
+        <input
+          type="text"
+          id="todoInput"
+          placeholder="Add a task..."
+        />
+        <button id="addTaskBtn">
+          Add
+        </button>
+      </div>
+
+      <ul id="todoList" class="todo-list"></ul>
+
+    </section>
+
+    <!-- Notes -->
+    <section class="card fade-up">
+
+      <div class="section-header">
+        <h2>Notes</h2>
+      </div>
+
+      <textarea
+        id="notesArea"
+        placeholder="Write your notes here..."
+      ></textarea>
+
+      <button id="saveNotesBtn" class="save-btn">
+        Save Notes
+      </button>
+
+    </section>
+
+    <!-- Pomodoro Timer -->
+    <section class="card fade-up">
+
+      <div class="section-header">
+        <h2>Pomodoro Timer</h2>
+      </div>
+
+      <div class="timer-wrapper">
+
+        <div id="timerDisplay" class="timer-display">
+          25:00
+        </div>
+
+        <div class="timer-status">
+          <span id="sessionType">
+            Focus Session
+          </span>
+        </div>
+
+        <div class="timer-buttons">
+
+          <button id="startTimer">
+            Start
+          </button>
+
+          <button id="pauseTimer">
+            Pause
+          </button>
+
+          <button id="resetTimer">
+            Reset
+          </button>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- Productivity Quote -->
+    <section class="card quote-card fade-up">
+      <h3>Daily Focus</h3>
+
+      <p id="quote">
+        Success is the sum of small efforts repeated day in and day out.
+      </p>
+    </section>
+
+  </div>
+
+  <!-- Install Button -->
+  <button id="installBtn" class="install-btn hidden">
+    Install App
+  </button>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>FocusFlow • Offline Productivity PWA</p>
+  </footer>
+
+  <script src="script.js"></script>
+
+</body>
+</html>style.css
