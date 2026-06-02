@@ -1,40 +1,296 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="theme-color" content="#000000" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>FocusFlow - Productivity Dashboard</title>
+<title>FocusFlow v2</title>
 
-  <link rel="manifest" href="manifest.json" />
-  <link rel="stylesheet" href="style.css" />
+<link rel="manifest" href="manifest.json">
+<link rel="stylesheet" href="style.css">
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
 
 <body>
 
-  <!-- Loading Screen -->
-  <div id="loader">
-    <div class="loader-logo">FocusFlow</div>
-  </div>
+<div class="app">
 
-  <!-- App -->
-  <div class="app-container">
+    <!-- HEADER -->
+    <header class="header">
 
-    <!-- Header -->
-    <header class="header glass">
-      <div>
-        <h1>FocusFlow</h1>
-        <p>Stay focused. Stay productive.</p>
-      </div>
+        <div>
+            <h1>FocusFlow</h1>
+            <p>Your Productivity Companion</p>
+        </div>
 
-      <button id="themeToggle" class="icon-btn">
-        🌙
-      </button>
+        <button id="themeToggle" class="theme-btn">
+            🌙
+        </button>
+
+    </header>
+
+    <!-- DASHBOARD PAGE -->
+    <section id="dashboard" class="page active">
+
+        <div class="welcome-card card">
+            <h2>Welcome Back 👋</h2>
+
+            <p id="currentDate"></p>
+        </div>
+
+        <div class="stats-grid">
+
+            <div class="stat-card">
+                <h3 id="totalTasks">0</h3>
+                <span>Total Tasks</span>
+            </div>
+
+            <div class="stat-card">
+                <h3 id="completedTasks">0</h3>
+                <span>Completed</span>
+            </div>
+
+            <div class="stat-card">
+                <h3 id="pendingTasks">0</h3>
+                <span>Pending</span>
+            </div>
+
+            <div class="stat-card">
+                <h3 id="focusSessions">0</h3>
+                <span>Focus Sessions</span>
+            </div>
+
+        </div>
+
+        <div class="card">
+
+            <h3>Today's Progress</h3>
+
+            <div class="progress-bar">
+                <div id="progressFill"></div>
+            </div>
+
+            <p id="progressText">
+                0% Completed
+            </p>
+
+        </div>
+
+        <div class="card">
+
+            <h3>Daily Motivation</h3>
+
+            <p id="quote">
+                Success is the sum of small efforts repeated every day.
+            </p>
+
+        </div>
+
+    </section>
+
+    <!-- TASKS PAGE -->
+    <section id="tasks" class="page">
+
+        <div class="card">
+
+            <h2>Tasks</h2>
+
+            <div class="task-input">
+
+                <input
+                    type="text"
+                    id="taskInput"
+                    placeholder="Add a new task..."
+                >
+
+                <select id="taskCategory">
+
+                    <option value="Study">
+                        Study
+                    </option>
+
+                    <option value="Work">
+                        Work
+                    </option>
+
+                    <option value="Personal">
+                        Personal
+                    </option>
+
+                </select>
+
+                <button id="addTaskBtn">
+                    Add
+                </button>
+
+            </div>
+
+        </div>
+
+        <div class="card">
+
+            <div class="filters">
+
+                <button class="filter-btn active-filter"
+                    data-filter="all">
+                    All
+                </button>
+
+                <button class="filter-btn"
+                    data-filter="active">
+                    Active
+                </button>
+
+                <button class="filter-btn"
+                    data-filter="completed">
+                    Completed
+                </button>
+
+            </div>
+
+            <ul id="taskList"></ul>
+
+        </div>
+
+    </section>
+
+    <!-- NOTES PAGE -->
+    <section id="notes" class="page">
+
+        <div class="card">
+
+            <h2>Notes</h2>
+
+            <textarea
+                id="notesArea"
+                placeholder="Write your notes here..."
+            ></textarea>
+
+            <button id="saveNoteBtn">
+                Save Note
+            </button>
+
+            <p id="saveStatus">
+                Auto Save Enabled
+            </p>
+
+        </div>
+
+    </section>
+
+    <!-- FOCUS PAGE -->
+    <section id="focus" class="page">
+
+        <div class="card focus-card">
+
+            <h2>Pomodoro Focus</h2>
+
+            <div id="timerDisplay">
+                25:00
+            </div>
+
+            <p id="timerStatus">
+                Focus Session
+            </p>
+
+            <div class="timer-controls">
+
+                <button id="startBtn">
+                    Start
+                </button>
+
+                <button id="pauseBtn">
+                    Pause
+                </button>
+
+                <button id="resetBtn">
+                    Reset
+                </button>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- SETTINGS PAGE -->
+    <section id="settings" class="page">
+
+        <div class="card">
+
+            <h2>Settings</h2>
+
+            <button id="clearDataBtn">
+                Clear All Data
+            </button>
+
+        </div>
+
+        <div class="card">
+
+            <h3>About</h3>
+
+            <p>
+                FocusFlow v2
+            </p>
+
+            <p>
+                Productivity App
+            </p>
+
+        </div>
+
+    </section>
+
+</div>
+
+<!-- BOTTOM NAVIGATION -->
+
+<nav class="bottom-nav">
+
+    <button class="nav-btn active-nav"
+        data-page="dashboard">
+        🏠
+        <span>Home</span>
+    </button>
+
+    <button class="nav-btn"
+        data-page="tasks">
+        ✅
+        <span>Tasks</span>
+    </button>
+
+    <button class="nav-btn"
+        data-page="notes">
+        📝
+        <span>Notes</span>
+    </button>
+
+    <button class="nav-btn"
+        data-page="focus">
+        🍅
+        <span>Focus</span>
+    </button>
+
+    <button class="nav-btn"
+        data-page="settings">
+        ⚙️
+        <span>Settings</span>
+    </button>
+
+</nav>
+
+<!-- FOOTER -->
+
+<footer class="footer">
+    Created by Tejas Jadhav
+</footer>
+
+<script src="script.js"></script>
+
+</body>
+</html>      </button>
     </header>
 
     <!-- Dashboard Stats -->
